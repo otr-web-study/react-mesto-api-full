@@ -1,6 +1,6 @@
 {
-  "homepage": "https://otr-web-study.github.io/react-mesto-auth",
-  "name": "react-mesto-auth",
+  "homepage": "",
+  "name": "react-mesto",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -19,7 +19,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "scp -r ./build/* otr-web-study@84.252.137.183:/home/otr-web-study/mesto-frontend"
   },
   "eslintConfig": {
     "extends": [

@@ -38,6 +38,6 @@ app.use(errorLogger);
 app.use(errors());
 app.use(centralizedErrorHandling);
 
-app.listen(PORT, '127.0.0.1', () => {
+app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
 });

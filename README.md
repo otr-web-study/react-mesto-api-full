@@ -31,3 +31,4 @@ cd frontend && mpm install && npm run start
 ```
 ### Проект опубликован по адресу:
 https://frontend.otrproject.nomoredomains.sbs
+http://84.252.137.183

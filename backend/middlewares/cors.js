@@ -2,6 +2,7 @@ module.exports = (req, res, next) => {
   const allowedCors = [
     'https://frontend.otrproject.nomoredomains.sbs',
     'http://frontend.otrproject.nomoredomains.sbs',
+    'http://84.252.137.183',
     'http://localhost:3001',
   ];
   const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
