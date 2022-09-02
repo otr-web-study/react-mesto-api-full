@@ -10,6 +10,7 @@ const updateCard = (res, cardId, data) => Card.findByIdAndUpdate(cardId, data, {
 
 module.exports.getCards = (req, res, next) => {
   Card.find({})
+    .sort('-createdAt')
     .populate(['owner', { path: 'likes' }])
     .then((cards) => res.send(cards))
     .catch(next);
