@@ -1,11 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const helmet = require('helmet');
 const { errors } = require('celebrate');
-const usersRouter = require('./routes/users');
-const cardsRouter = require('./routes/cards');
-const authRouter = require('./routes/auth');
-const ObjectNotFoundError = require('./errors/ObjectNotFoundError');
+const router = require('./routes');
 const centralizedErrorHandling = require('./middlewares/centralizedErrorHandling');
 const cors = require('./middlewares/cors');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
@@ -20,6 +18,7 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 app.use(requestLogger);
 app.use(cors);
 app.use(bodyParser.json());
+app.use(helmet());
 
 app.get('/crash-test', () => {
   setTimeout(() => {
@@ -27,12 +26,7 @@ app.get('/crash-test', () => {
   }, 0);
 });
 
-app.use('/users', usersRouter);
-app.use('/cards', cardsRouter);
-app.use('/', authRouter);
-app.all('*', (req, res, next) => {
-  next(new ObjectNotFoundError('Несуществующий путь.'));
-});
+app.use('/', router);
 
 app.use(errorLogger);
 app.use(errors());
